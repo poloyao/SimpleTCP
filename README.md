@@ -5,6 +5,14 @@ Straightforward and incredibly useful .NET library to handle the repetitive task
 
 ![Build Status](https://ci.appveyor.com/api/projects/status/felx0b90mwgr4l4n?svg=true)
 
+
+server端主动close客户端后有一给bug导致RunLoopStep报错需要修改IsSocketConnected函数头增加优先判断否则无法正常的回调Server_ClientDisconnected
+
+```cs
+if (!s.Connected)
+    return false;
+```
+
 Want a TCP server that listens on port 8910 on all the IP addresses on the machine?
 
 ```cs
