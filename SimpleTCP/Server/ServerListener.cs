@@ -78,6 +78,8 @@ namespace SimpleTCP.Server
 	    
 	bool IsSocketConnected(Socket s)
 	{
+   	    if (!s.Connected)
+		return false;
 	    // https://stackoverflow.com/questions/2661764/how-to-check-if-a-socket-is-connected-disconnected-in-c
 	    bool part1 = s.Poll(1000, SelectMode.SelectRead);
 	    bool part2 = (s.Available == 0);
